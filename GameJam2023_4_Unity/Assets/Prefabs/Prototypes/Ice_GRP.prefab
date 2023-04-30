@@ -30,7 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3721613272479588475}
-  - {fileID: 3721613273737706017}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e133d5902d1ca4a92fcb4713b5125d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableArea: {fileID: 3721613273737706023}
+  iceArea: {fileID: 1004463523856757425}
   animator: {fileID: 3721613272479588473}
 --- !u!1 &3721613272479588453
 GameObject:
@@ -58,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3721613272479588475}
   - component: {fileID: 3721613272479588474}
-  - component: {fileID: 3721613272479588472}
+  - component: {fileID: 4660559682555640000}
   - component: {fileID: 3721613272479588473}
   m_Layer: 0
   m_Name: Ice_Look
@@ -78,7 +77,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 4.3799863, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7794450595089837459}
   m_Father: {fileID: 3721613272219520586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3721613272479588472
+--- !u!61 &4660559682555640000
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &3721613273737706016
+--- !u!1 &4886733234100244115
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,38 +189,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3721613273737706017}
-  - component: {fileID: 3721613273737706022}
-  - component: {fileID: 3721613273737706023}
+  - component: {fileID: 7794450595089837459}
+  - component: {fileID: 3566048071669216761}
+  - component: {fileID: 1004463523856757425}
   m_Layer: 0
-  m_Name: Ice_InteractableArea
+  m_Name: Ice_TriggerArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3721613273737706017
+--- !u!4 &7794450595089837459
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721613273737706016}
+  m_GameObject: {fileID: 4886733234100244115}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9444, y: 4.3799863, z: 1}
+  m_LocalScale: {x: 2.9444, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3721613272219520586}
-  m_RootOrder: 1
+  m_Father: {fileID: 3721613272479588475}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3721613273737706022
+--- !u!61 &3566048071669216761
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721613273737706016}
+  m_GameObject: {fileID: 4886733234100244115}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -238,19 +238,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.34766996, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3721613273737706023
+--- !u!114 &1004463523856757425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721613273737706016}
+  m_GameObject: {fileID: 4886733234100244115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1af91348e2409ee4ea46f2e0cd2b69be, type: 3}
+  m_Script: {fileID: 11500000, guid: 220bb214a5640ac4ab189f34aac18ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerIn: 0
-  currentPlayer: {fileID: 0}

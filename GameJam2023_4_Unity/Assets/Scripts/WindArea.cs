@@ -8,7 +8,7 @@ public class WindArea : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().FireCount++;
+            GameManager.singleton.GetCurrentPlayer().FireCount++;
 
             Destroy(transform.parent.gameObject);
         }
