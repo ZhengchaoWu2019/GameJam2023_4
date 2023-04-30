@@ -2892,8 +2892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d5c2355f9fb14dac61ed4eada1642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   offset: {x: 0, y: 1.7, z: -10}
   targetTf: {fileID: 796443556}
+  isZoomAniEnd: 0
 --- !u!114 &673802386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5458,10 +5460,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b7701beb468e64b886cd13dd73f8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireGhost: {fileID: 3233327111593529633, guid: 74c8ffe4a1869354da9a5688f1b390d9, type: 3}
+  player_prefab: {fileID: 0}
+  fireGhost_prefab: {fileID: 0}
+  uiManager: {fileID: 0}
+  spawnPointTf: {fileID: 0}
   cameraFollow: {fileID: 673802385}
+  gameState: 0
+  enterStateOnce: 1
   currentPlayer: {fileID: 796443557}
-  firingWood: {fileID: 0}
   currentFireGhost: {fileID: 0}
 --- !u!1 &1346104032
 GameObject:
