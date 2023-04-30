@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
             if(fireCount == 0)
             {
-                Debug.Log("Death");
+                GameManager.singleton.PlayerDead();
             }
         }
     }
