@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
@@ -9,8 +8,7 @@ public class End : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Camera zoom in and play animation");
-            Debug.Log("Go to Next Scene");
+            GameManager.singleton.PlayerFinishScene();
         }
     }
 }

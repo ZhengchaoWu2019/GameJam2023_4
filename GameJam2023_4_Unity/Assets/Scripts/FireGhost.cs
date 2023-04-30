@@ -37,6 +37,13 @@ public class FireGhost : MonoBehaviour
         {
             moveDown = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GameManager.singleton.GetCurrentPlayer().FireCount++;
+
+            GameManager.singleton.ChangeControlToPlayer();
+        }
     }
 
     private void FixedUpdate()

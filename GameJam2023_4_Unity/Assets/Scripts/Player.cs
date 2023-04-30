@@ -53,9 +53,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            GameManager.singleton.ChangeControlToFireGhost();
+            if (fireCount >= 2)
+            {
+                FireCount--;
+                GameManager.singleton.ChangeControlToFireGhost();
+            }
         }
     }
 

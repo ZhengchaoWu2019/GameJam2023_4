@@ -5,23 +5,18 @@ using UnityEngine;
 public class Ice : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] InteractableArea interactableArea;
+    [SerializeField] TriggerArea iceArea;
     [SerializeField] Animator animator;
 
-
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (interactableArea.CheckIsPlayerIn())
-            {
-                Player currentPlayer = interactableArea.GetPlayer();
-                if (currentPlayer.FireCount >= 2)
-                {
-                    animator.SetTrigger("toDisappear");
-                    currentPlayer.FireCount--;
-                }
-            }
-        }
+        iceArea.OnFireGhostCollided += OnFireGhostCollided;
+    }
+
+    void OnFireGhostCollided()
+    {
+        animator.SetTrigger("toDisappear");
+
+        GameManager.singleton.ChangeControlToPlayer();
     }
 }

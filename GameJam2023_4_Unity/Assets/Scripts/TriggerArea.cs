@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodArea : MonoBehaviour
+public class TriggerArea : MonoBehaviour
 {
     public System.Action OnFireGhostCollided;
 
