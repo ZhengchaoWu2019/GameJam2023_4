@@ -6,9 +6,6 @@ TagManager:
   tags:
   - Ground
   - FireGhost
-  - Monster
-  - Wood
-  - Trap
   layers:
   - Default
   - TransparentFX
