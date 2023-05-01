@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        currentPlayer.enabled = false;
+        currentPlayer.StopControl();
 
         currentFireGhost = Instantiate(fireGhost_prefab, currentPlayer.transform.position, Quaternion.identity);
 
