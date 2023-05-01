@@ -17,7 +17,14 @@ public class UI_Manager : MonoBehaviour
     public void ShowEndSceneUI()
     {
         dialogue.gameObject.SetActive(true);
-        dialogue.SetDialogueContents(dialogue.GetSceneEndDialogContents());
+        List<DialogueContent> contents = dialogue.GetSceneEndDialogContents();
+        if(contents.Count <= 0)
+        {
+            OnDialogueFinished();
+            return;
+        }
+
+        dialogue.SetDialogueContents(contents);
         dialogue.ShowNextDialogue();
     }
 
