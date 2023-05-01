@@ -18,6 +18,10 @@ public class Wood : MonoBehaviour
         firing = false;
     }
 
+    public bool CheckIsFiring()
+    {
+        return firing;
+    }
     private void Start()
     {
         woodArea.OnFireGhostCollided += OnFireGhostCollided;

@@ -9,7 +9,8 @@ public class UI_Dialogue : MonoBehaviour
     public System.Action OnDialogueFinished;
 
     [Header("Properties")]
-    [SerializeField] List<DialogueContent> dialogueContents;
+    [SerializeField] List<DialogueContent> sceneStartDialogContents;
+    [SerializeField] List<DialogueContent> sceneEndDialogContents;
     [SerializeField] float sayingSpeed;
 
     [Header("Components")]
@@ -20,13 +21,13 @@ public class UI_Dialogue : MonoBehaviour
     [Header("Read Only")]
     [SerializeField] bool isShowingFinished = true;
     [SerializeField] int toShowNextCount;
-    [SerializeField] int dialogIndex;
+    [SerializeField] int sceneStartDialogIndex;
+    [SerializeField] int sceneEndDialogIndex;
 
     public void ShowNextDialogue()
     {
         toShowNextCount++;
     }
-
 
     #region Life Cycle
     private void Awake()
@@ -48,20 +49,45 @@ public class UI_Dialogue : MonoBehaviour
 
         if (toShowNextCount > 0)
         {
-            if (dialogIndex < dialogueContents.Count)
+            if (GameManager.singleton.CheckIsSceneStart())
             {
-                DialogueContent currentDialog = dialogueContents[dialogIndex];
+                if (sceneStartDialogIndex < sceneStartDialogContents.Count)
+                {
+                    DialogueContent currentDialog = sceneStartDialogContents[sceneStartDialogIndex];
 
-                ShowDialogue(currentDialog.name, currentDialog.content);
-                isShowingFinished = false;
+                    ShowDialogue(currentDialog.name, currentDialog.content);
+                    isShowingFinished = false;
 
-                toShowNextCount--;
+                    toShowNextCount--;
 
-                dialogIndex++;
+                    sceneStartDialogIndex++;
+
+                }
+                else
+                {
+                    toShowNextCount = 0;
+                    OnDialogueFinished?.Invoke();
+                }
             }
             else
             {
-                OnDialogueFinished?.Invoke();
+                if (sceneEndDialogIndex < sceneEndDialogContents.Count)
+                {
+                    DialogueContent currentDialog = sceneEndDialogContents[sceneEndDialogIndex];
+
+                    ShowDialogue(currentDialog.name, currentDialog.content);
+                    isShowingFinished = false;
+
+                    toShowNextCount--;
+
+                    sceneEndDialogIndex++;
+
+                }
+                else
+                {
+                    toShowNextCount = 0;
+                    OnDialogueFinished?.Invoke();
+                }
             }
         }
     }

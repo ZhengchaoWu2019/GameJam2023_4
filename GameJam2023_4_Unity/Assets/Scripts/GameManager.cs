@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     enum GameState {Start, Normal, End };
 
+    static bool isReload = false;
+
     [Header("Prefabs")]
     [SerializeField] GameObject player_prefab;
     [SerializeField] GameObject fireGhost_prefab;
@@ -43,11 +45,15 @@ public class GameManager : MonoBehaviour
         currentPlayer.enabled = false;
 
         currentFireGhost = Instantiate(fireGhost_prefab, currentPlayer.transform.position, Quaternion.identity);
+
+        cameraFollow.ChangeTargetTf(currentFireGhost.transform);
     }
 
     public void ChangeControlToPlayer()
     {
         currentPlayer.enabled = true;
+
+        cameraFollow.ChangeTargetTf(currentPlayer.transform);
 
         Destroy(currentFireGhost);
     }
@@ -61,6 +67,46 @@ public class GameManager : MonoBehaviour
     {
         ChangeGameState(GameState.End);
     }
+
+    public bool CheckIsSceneStart()
+    {
+        if(gameState == GameState.Start)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void PlayerDead()
+    {
+        Destroy(currentPlayer.gameObject);
+
+        cameraFollow.PlayCameraZoomAni();
+        uiManager.PlaySceneEndAni();
+
+        currentWait = new Wait();
+        currentWait.AddCheckFunction(cameraFollow.CheckIsZoomAniEnd);
+        currentWait.AddCheckFunction(uiManager.CheckIsSceneEndAniFinished);
+        currentWait.SetAfterFinishedCallbackFunc(RespawnPlayer);
+
+        StartCoroutine(currentWait.StartWait());
+    }
+
+    public void EnterSceneEnd()
+    {
+        cameraFollow.PlayCameraZoomAni();
+        uiManager.PlaySceneEndAni();
+
+        currentWait = new Wait();
+        currentWait.AddCheckFunction(cameraFollow.CheckIsZoomAniEnd);
+        currentWait.AddCheckFunction(uiManager.CheckIsSceneEndAniFinished);
+        currentWait.SetAfterFinishedCallbackFunc(GotoNextScene);
+
+        StartCoroutine(currentWait.StartWait());
+
+        isReload = false;
+    }
     #endregion
 
     #region Life Cycle
@@ -73,7 +119,15 @@ public class GameManager : MonoBehaviour
     {
         uiManager.HideUI();
 
-        ChangeGameState(GameState.Start);
+        if (!isReload)
+        {
+            ChangeGameState(GameState.Start);
+        }
+        else
+        {
+            InstantiatePlayer(true);
+            ChangeGameState(GameState.Normal);
+        }
     }
 
     private void Update()
@@ -95,7 +149,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.End:
                 enterStateOnce = false;
-                EnterSceneEnd();
+                EnterSceneEndDialogue();
                 break;
         }
     }
@@ -112,7 +166,7 @@ public class GameManager : MonoBehaviour
     {
         InstantiatePlayer(false);
 
-        uiManager.ShowUI();
+        uiManager.ShowStartSceneUI();
     }
 
     void EnterPlayerControl()
@@ -120,23 +174,22 @@ public class GameManager : MonoBehaviour
         currentPlayer.enabled = true;
     }
 
-    void EnterSceneEnd()
+    void EnterSceneEndDialogue()
     {
         currentPlayer.enabled = false;
-        cameraFollow.PlayCameraZoomAni();
-        uiManager.PlaySceneEndAni();
+        currentPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        currentWait = new Wait();
-        currentWait.AddCheckFunction(cameraFollow.CheckIsZoomAniEnd);
-        currentWait.AddCheckFunction(uiManager.CheckIsSceneEndAniFinished);
-        currentWait.SetAfterFinishedCallbackFunc(GotoNextScene);
-
-        StartCoroutine(currentWait.StartWait());
+        uiManager.ShowEndSceneUI();
     }
-
     void GotoNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void RespawnPlayer()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        isReload = true;
     }
 
     void InstantiatePlayer(bool canControl)
