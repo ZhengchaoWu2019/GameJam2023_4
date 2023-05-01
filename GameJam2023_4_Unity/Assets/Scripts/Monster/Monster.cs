@@ -31,9 +31,7 @@ public class Monster : MonoBehaviour
     [SerializeField] Vector2 toPos;
     [SerializeField] bool attacking;
     [SerializeField] float? startWaitTime;
-    [SerializeField] Vector2? attractPos;
-    [SerializeField] Vector2 faceDir;
-    [SerializeField] Vector3 originalScale;
+    [SerializeField] Vector2 attractPos;
 
     #region Life Cycle
     private void Awake()
@@ -47,9 +45,6 @@ public class Monster : MonoBehaviour
         monsterState = MonsterState.Patrol;
         SetRandomFromToPosition();
         t = InverseLerp(fromPos, toPos, transform.position);
-        faceDir = (toPos - (Vector2)transform.position).normalized;
-        attractPos = null;
-        originalScale = transform.localScale;
     }
 
     private void Update()
@@ -75,15 +70,6 @@ public class Monster : MonoBehaviour
                 Attract();
                 break;
         }
-
-        if(faceDir.x > 0)
-        {
-            transform.localScale = originalScale;
-        }
-        else if(faceDir.x < 0)
-        {
-            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
-        }
     }
     #endregion
     void Patrol()
@@ -99,7 +85,6 @@ public class Monster : MonoBehaviour
             Vector2 tempPos = fromPos;
             fromPos = toPos;
             toPos = tempPos;
-            faceDir = (toPos - (Vector2)transform.position).normalized;
             t = 0;
         }
     }
@@ -119,8 +104,6 @@ public class Monster : MonoBehaviour
         float dir = (currentTargetTf.position - transform.position).x;
         float delta = Mathf.Sign(dir) * speed * Time.deltaTime;
         transform.position += new Vector3(delta, 0, 0);
-
-        faceDir = (currentTargetTf.position - transform.position).normalized;
     }
 
     void Attack()
@@ -149,8 +132,6 @@ public class Monster : MonoBehaviour
                 fromPos = transform.position;
 
                 startWaitTime = null;
-
-                faceDir = (toPos - (Vector2)transform.position).normalized;
             }
         }
     }
@@ -170,8 +151,6 @@ public class Monster : MonoBehaviour
             toPos = bound1Tf.position.Equals(toPos) ? bound2Tf.position : bound1Tf.position;
             fromPos = transform.position;
             monsterState = MonsterState.Patrol;
-
-            faceDir = (toPos - (Vector2)transform.position).normalized;
         }
     }
 
@@ -207,11 +186,6 @@ public class Monster : MonoBehaviour
 
     void ChangeTarget(Transform newTargetTf)
     {
-        if(attractPos != null)
-        {
-            return;
-        }
-
         if (newTargetTf != null)
         {
             startWaitTime = null;
@@ -230,13 +204,11 @@ public class Monster : MonoBehaviour
         attractPos = newAttractPos;
         rb2D.isKinematic = false;
         GetComponent<Collider2D>().isTrigger = false;
-        Vector2 delta = attractPos.Value - (Vector2)transform.position;
+        Vector2 delta = attractPos - (Vector2)transform.position;
         Vector2 dir = delta.x > 0 ? Vector2.right : -Vector2.right;
         rb2D.velocity = dir * attractSpeed;
 
         monsterState = MonsterState.Attract;
-
-        faceDir = (attractPos.Value - (Vector2)transform.position).normalized;
     }
 
     void Animation_OnDamageStart()
