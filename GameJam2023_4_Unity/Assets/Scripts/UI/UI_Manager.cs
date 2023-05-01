@@ -24,9 +24,17 @@ public class UI_Manager : MonoBehaviour
     public void ShowNPCUI()
     {
         dialogue.gameObject.SetActive(true);
-        dialogue.SetDialogueContents(
-            GameManager.singleton.GetCurrentInteractNPC()
-            .GetComponent<NPCInteractiveArea>().GetDialogueContents());
+
+        NPCInteractiveArea npc = GameManager.singleton.GetCurrentInteractNPC().GetComponent<NPCInteractiveArea>();
+        if (!npc.CheckIsFinishedTack())
+        {
+            dialogue.SetDialogueContents(npc.GetBeforeDialogueContents());
+        }
+        else
+        {
+            dialogue.SetDialogueContents(npc.GetAfterDialogueContents());
+        }
+
         dialogue.ShowNextDialogue();
     }
 

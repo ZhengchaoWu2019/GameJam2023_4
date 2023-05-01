@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7414377385170615080}
   - component: {fileID: 7414377385170615082}
   - component: {fileID: 7414377385170615083}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trap_Look
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7414377385501466953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trap_GRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

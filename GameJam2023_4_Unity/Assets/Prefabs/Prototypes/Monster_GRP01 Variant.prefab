@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152932, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.56
+      value: 7.28
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152932, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.87
+      value: 6.81
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152932, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53,15 +53,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152933, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Name
-      value: Monster_GRP01
+      value: Monster_GRP01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977040, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7566
+      value: 2.2278087
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977040, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7562
+      value: 2.226631
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977040, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.9445
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977040, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,16 +80,52 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -853770996, guid: f3fe29d8f1a471446a9ebe60992c8498, type: 3}
+    - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977054, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8025741
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977054, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.56184196
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977054, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.016153187
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187901447977054, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.010774493
       objectReference: {fileID: 0}
     - target: {fileID: 664187902121382448, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 664187902121382451, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_Radius
+      value: 0.21674597
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187902513772163, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 664187902653108589, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractWood
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 664187903068878739, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}

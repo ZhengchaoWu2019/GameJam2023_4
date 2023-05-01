@@ -5,22 +5,41 @@ using UnityEngine;
 public class NPCInteractiveArea : MonoBehaviour
 {
     [Header("Properties")]
-    [SerializeField] List<DialogueContent> npcDialogContents;
+    [SerializeField] List<DialogueContent> npcBeforeDialogContents;
+    [SerializeField] List <DialogueContent> npcAfterDialogContents;
 
     [Header("Components")]
     [SerializeField] GameObject taskBindTreasureGO;
 
     [Header("Read Only")]
     [SerializeField] bool isInteracted = false;
+    [SerializeField] bool tackFinished = false;
 
-    public List<DialogueContent> GetDialogueContents()
+    public List<DialogueContent> GetBeforeDialogueContents()
     {
-        return npcDialogContents;
+        return npcBeforeDialogContents;
+    }
+
+    public List<DialogueContent> GetAfterDialogueContents()
+    {
+        return npcAfterDialogContents;
+    }
+
+    public bool CheckIsFinishedTack()
+    {
+        return tackFinished;
     }
 
     public void TriggerTaskFinishOperation()
     {
+        if(tackFinished)
+        {
+            return;
+        }
+
         taskBindTreasureGO.SetActive(true);
+        tackFinished = true;
+        isInteracted = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
