@@ -505,6 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 7247669772449754503}
+  animator: {fileID: 7614973464978132839}
+  footAnimator: {fileID: 6047779177257967587}
+  playerAni: {fileID: 7900194522479151610}
   fireCount: 3
   speed: 5
   jumpSpeed: 5
@@ -523,6 +526,7 @@ GameObject:
   - component: {fileID: 7247669773620442125}
   - component: {fileID: 7247669773620442124}
   - component: {fileID: 7614973464978132839}
+  - component: {fileID: 7900194522479151610}
   m_Layer: 3
   m_Name: Look
   m_TagString: Player
@@ -619,3 +623,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7900194522479151610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247669773620442122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f14806ffc80c634888b08deb46f17d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
