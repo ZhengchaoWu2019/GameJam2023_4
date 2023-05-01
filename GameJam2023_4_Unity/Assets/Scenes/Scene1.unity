@@ -3782,7 +3782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977042, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractSpeed
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
@@ -5771,7 +5771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152932, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.12
+      value: 19.82
       objectReference: {fileID: 0}
     - target: {fileID: 664187901333152932, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5831,7 +5831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977042, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractSpeed
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
@@ -7244,7 +7244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977042, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractSpeed
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
@@ -8271,8 +8271,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneStartDialogContents.Array.data[0].content
-      value: "Revive finally Braconnot . Oh\uFF0C Gifted Spark, you will bring hope
-        and disaster to every corner of the world."
+      value: Revive finally Braconnot . Oh,Gifted Spark, you will bring hope and
+        disaster to every corner of the world.
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneStartDialogContents.Array.data[1].content
@@ -9979,6 +9979,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3976464996698703121, guid: b13c273185c3ac34fa933c7724992339, type: 3}
+      propertyPath: attractSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976464996698703121, guid: b13c273185c3ac34fa933c7724992339, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.69
+      objectReference: {fileID: 0}
     - target: {fileID: 3976464996815624678, guid: b13c273185c3ac34fa933c7724992339, type: 3}
       propertyPath: m_Name
       value: Monster_GRP01
