@@ -8351,7 +8351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneEndDialogContents.Array.data[2].content
-      value: "   <You don't look like you could eat it\uFF0C>"
+      value: '   <You don''t look like you could eat it,>'
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneEndDialogContents.Array.data[3].content
