@@ -6,8 +6,6 @@ public class Player : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb2D;
-    [SerializeField] Animator footAnimator;
-    [SerializeField] PlayerAni playerAni;
 
     [Header("Properties")]
     [SerializeField] int fireCount;
@@ -24,53 +22,17 @@ public class Player : MonoBehaviour
     {
         get { return fireCount; }
         set 
-        {
-            Animator animator = playerAni.GetComponent<Animator>();
-
-            if (fireCount == 3)
-            {
-                if (value - fireCount < 0)
-                {
-                    animator.SetBool("L2M", true);
-                }
-            }
-
-            if(fireCount == 2)
-            {
-                if(value - fireCount > 0)
-                {
-                    animator.SetBool("L2M", false);
-                }
-                else
-                {
-                    animator.SetBool("M2S", true);
-                }
-            }
-
-            if(fireCount == 1)
-            {
-                if(value - fireCount > 0)
-                {
-                    animator.SetBool("M2S", false);
-                }
-            }
-
+        { 
             fireCount = Mathf.Clamp(value, 0, 3);
 
             if(fireCount == 0)
             {
-                animator.SetTrigger("toDie");
+                GameManager.singleton.PlayerDead();
             }
-
-            
         }
     }
 
     #region Life Cycle
-    private void Awake()
-    {
-        playerAni.OnDieAniEnd += AfterPlayerDead;
-    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.D))
@@ -123,26 +85,6 @@ public class Player : MonoBehaviour
             canJump = false;
             jump = false;
         }
-
-        if(canJump && rb2D.velocity.x != 0)
-        {
-            footAnimator.SetBool("toWalk", true);
-        }
-        else
-        {
-            footAnimator.SetBool("toWalk", false);
-        }
-
-        if(rb2D.velocity.x > 0)
-        {
-            playerAni.GetComponent<SpriteRenderer>().flipX = false;
-            footAnimator.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if(rb2D.velocity.x < 0)
-        {
-            playerAni.GetComponent<SpriteRenderer>().flipX = true;
-            footAnimator.GetComponent<SpriteRenderer>().flipX = true;
-        }
     }
     #endregion
 
@@ -152,10 +94,5 @@ public class Player : MonoBehaviour
         {
             canJump = true;
         }
-    }
-
-    void AfterPlayerDead()
-    {
-        GameManager.singleton.PlayerDead();
     }
 }
