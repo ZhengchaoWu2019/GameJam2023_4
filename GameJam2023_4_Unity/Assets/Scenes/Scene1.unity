@@ -5915,7 +5915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977042, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractSpeed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
@@ -7328,7 +7328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977042, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: attractSpeed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 664187901447977043, guid: 38bb0820282412048b0ab62453b9dce3, type: 3}
       propertyPath: m_Color.a
@@ -8331,15 +8331,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneStartDialogContents.Array.data[0].name
-      value: ???
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneStartDialogContents.Array.data[1].name
-      value: ???
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneStartDialogContents.Array.data[2].name
-      value: ???
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 924680854360966302, guid: 31d3f9410a78c4cc4b57cbfbaac195bb, type: 3}
       propertyPath: sceneEndDialogContents.Array.data[0].content
