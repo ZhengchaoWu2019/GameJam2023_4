@@ -8,21 +8,16 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] UI_Dialogue dialogue;
     [SerializeField] UI_SceneEndAni sceneEndAni;
 
-    public void ShowStartSceneUI()
+    public void ShowUI()
     {
         dialogue.gameObject.SetActive(true);
-        dialogue.ShowNextDialogue();
-    }
-    public void ShowEndSceneUI()
-    {
-        dialogue.gameObject.SetActive(true);
+
         dialogue.ShowNextDialogue();
     }
 
     public void HideUI()
     {
         dialogue.gameObject.SetActive(false);
-        sceneEndAni.gameObject.SetActive(false);
     }
 
     public void PlaySceneEndAni()
@@ -45,13 +40,7 @@ public class UI_Manager : MonoBehaviour
     void OnDialogueFinished()
     {
         HideUI();
-        if (GameManager.singleton.CheckIsSceneStart())
-        {
-            GameManager.singleton.PlayerStartControl();
-        }
-        else
-        {
-            GameManager.singleton.EnterSceneEnd();
-        }
+
+        GameManager.singleton.PlayerStartControl();
     }
 }
