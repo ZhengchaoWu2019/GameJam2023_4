@@ -6,8 +6,6 @@ public class CameraFollow : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Animator animator;
-    [SerializeField] List<Transform> layerTfs;
-    [SerializeField] float parallaxFar;
 
     [Header("Properties")]
     [SerializeField] Vector3 offset;
@@ -15,7 +13,6 @@ public class CameraFollow : MonoBehaviour
     [Header("Read Only")]
     [SerializeField] Transform targetTf;
     [SerializeField] bool isZoomAniEnd;
-    [SerializeField] Vector2 prevPos;
 
     public void ChangeTargetTf(Transform newTargetTf)
     {
@@ -28,11 +25,6 @@ public class CameraFollow : MonoBehaviour
         isZoomAniEnd = false;
     }
 
-    public void BackToFollow()
-    {
-        animator.SetTrigger("toNormal");
-    }
-
     public bool CheckIsZoomAniEnd()
     {
         return isZoomAniEnd;
@@ -43,16 +35,6 @@ public class CameraFollow : MonoBehaviour
         if(targetTf != null)
         {
             transform.position = targetTf.position + offset;
-
-            foreach(var layerTf in layerTfs)
-            {
-                float t = Mathf.InverseLerp(0, Mathf.Abs(parallaxFar), Mathf.Abs(layerTf.position.z));
-
-                Vector2 delta = (Vector2)transform.position - prevPos;
-                delta = Vector2.Lerp(Vector2.zero, delta, t);
-                layerTf.position += new Vector3(delta.x, delta.y, 0);
-            }
-                prevPos = transform.position;
         }
     }
 
