@@ -83,6 +83,13 @@ public class FireGhost : MonoBehaviour
             if (moveUp)
             {
                 float allowDistance = Mathf.Abs(Vector2.Dot(dis, Vector2.up));
+                if (allowDistance == 0)
+                {
+                    if (deltaVec.magnitude <= moveRadius)
+                    {
+                        return;
+                    }
+                }
                 if (deltaVec.y >= allowDistance)
                 {
                     moveUp = false;
@@ -91,6 +98,13 @@ public class FireGhost : MonoBehaviour
             if (moveDown)
             {
                 float allowDistance = Mathf.Abs(Vector2.Dot(dis, Vector2.up));
+                if (allowDistance == 0)
+                {
+                    if (deltaVec.magnitude <= moveRadius)
+                    {
+                        return;
+                    }
+                }
                 if (deltaVec.y <= -allowDistance)
                 {
                     moveDown = false;
