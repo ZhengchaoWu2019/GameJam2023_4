@@ -66,6 +66,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StopControl()
+    {
+        this.enabled = false;
+        rb2D.velocity = Vector2.zero;
+        playerAni.GetComponent<Animator>().SetBool("toWalk", false);
+        footAnimator.SetBool("toWalk", false);
+    }
+
     #region Life Cycle
     private void Awake()
     {

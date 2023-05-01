@@ -11,11 +11,22 @@ public class UI_Manager : MonoBehaviour
     public void ShowStartSceneUI()
     {
         dialogue.gameObject.SetActive(true);
+        dialogue.SetDialogueContents(dialogue.GetSceneStartDialogContents());
         dialogue.ShowNextDialogue();
     }
     public void ShowEndSceneUI()
     {
         dialogue.gameObject.SetActive(true);
+        dialogue.SetDialogueContents(dialogue.GetSceneEndDialogContents());
+        dialogue.ShowNextDialogue();
+    }
+
+    public void ShowNPCUI()
+    {
+        dialogue.gameObject.SetActive(true);
+        dialogue.SetDialogueContents(
+            GameManager.singleton.GetCurrentInteractNPC()
+            .GetComponent<NPCInteractiveArea>().GetDialogueContents());
         dialogue.ShowNextDialogue();
     }
 
@@ -45,13 +56,6 @@ public class UI_Manager : MonoBehaviour
     void OnDialogueFinished()
     {
         HideUI();
-        if (GameManager.singleton.CheckIsSceneStart())
-        {
-            GameManager.singleton.PlayerStartControl();
-        }
-        else
-        {
-            GameManager.singleton.EnterSceneEnd();
-        }
+        GameManager.singleton.FinishDialog();
     }
 }

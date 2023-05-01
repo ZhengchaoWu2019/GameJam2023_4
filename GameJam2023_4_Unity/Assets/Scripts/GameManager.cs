@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+public enum GameState {Start, Normal, End, InteractWithNPC };
 
 public class GameManager : MonoBehaviour
 {
-    enum GameState {Start, Normal, End };
 
     static bool isReload = false;
 
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player currentPlayer;
     [SerializeField] GameObject currentFireGhost;
     [SerializeField] Wait currentWait;
+    [SerializeField] GameObject currentNPC;
 
     #region singleton
     public static GameManager singleton;
@@ -68,14 +69,9 @@ public class GameManager : MonoBehaviour
         ChangeGameState(GameState.End);
     }
 
-    public bool CheckIsSceneStart()
+    public GameState GetGameState()
     {
-        if(gameState == GameState.Start)
-        {
-            return true;
-        }
-
-        return false;
+        return gameState;
     }
 
     public void PlayerDead()
@@ -106,6 +102,38 @@ public class GameManager : MonoBehaviour
         StartCoroutine(currentWait.StartWait());
 
         isReload = false;
+    }
+
+    public void StartInteractWithNPC(GameObject npc)
+    {
+        currentNPC = npc;
+        currentPlayer.StopControl();
+
+        uiManager.ShowNPCUI();
+
+        ChangeGameState(GameState.InteractWithNPC);
+    }
+
+    public GameObject GetCurrentInteractNPC()
+    {
+        return currentNPC;
+    }
+
+    public void FinishDialog()
+    {
+        switch (GameManager.singleton.GetGameState())
+        {
+            case GameState.Start:
+                GameManager.singleton.PlayerStartControl();
+                break;
+            case GameState.End:
+                GameManager.singleton.EnterSceneEnd();
+                break;
+            case GameState.InteractWithNPC:
+                currentNPC.GetComponent<NPCInteractiveArea>().TriggerTaskFinishOperation();
+                GameManager.singleton.PlayerStartControl();
+                break;
+        }
     }
     #endregion
 
@@ -151,6 +179,9 @@ public class GameManager : MonoBehaviour
                 enterStateOnce = false;
                 EnterSceneEndDialogue();
                 break;
+            case GameState.InteractWithNPC:
+                enterStateOnce = false;
+                break;
         }
     }
     #endregion
@@ -176,8 +207,7 @@ public class GameManager : MonoBehaviour
 
     void EnterSceneEndDialogue()
     {
-        currentPlayer.enabled = false;
-        currentPlayer.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        currentPlayer.StopControl();
 
         uiManager.ShowEndSceneUI();
     }
