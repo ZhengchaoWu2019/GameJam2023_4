@@ -118,6 +118,15 @@ public class FireGhost : MonoBehaviour
 
             GameManager.singleton.ChangeControlToPlayer();
         }
+
+        if (moveRight)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        else if (moveLeft)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void FixedUpdate()

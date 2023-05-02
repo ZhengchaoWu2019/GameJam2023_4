@@ -121,17 +121,17 @@ public class GameManager : MonoBehaviour
 
     public void FinishDialog()
     {
-        switch (GameManager.singleton.GetGameState())
+        switch (singleton.GetGameState())
         {
             case GameState.Start:
-                GameManager.singleton.PlayerStartControl();
+                singleton.PlayerStartControl();
                 break;
             case GameState.End:
-                GameManager.singleton.EnterSceneEnd();
+                singleton.EnterSceneEnd();
                 break;
             case GameState.InteractWithNPC:
-                currentNPC.GetComponent<NPCInteractiveArea>().TriggerTaskFinishOperation();
-                GameManager.singleton.PlayerStartControl();
+                currentNPC.GetComponent<NPCInteractiveArea>().FinishDialog();
+                singleton.PlayerStartControl();
                 break;
         }
     }
@@ -213,6 +213,15 @@ public class GameManager : MonoBehaviour
     }
     void GotoNextScene()
     {
+        if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            if(currentPlayer.FireCount == 3)
+            {
+                SceneManager.LoadScene("EndScene_L");
+                return;
+            }
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

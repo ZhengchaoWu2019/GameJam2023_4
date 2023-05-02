@@ -127,9 +127,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7307779544902099890}
   - component: {fileID: 7307779544902099893}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Triangle (11)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

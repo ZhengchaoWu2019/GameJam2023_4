@@ -9,7 +9,9 @@ public class NPCInteractiveArea : MonoBehaviour
     [SerializeField] List <DialogueContent> npcAfterDialogContents;
 
     [Header("Components")]
-    [SerializeField] GameObject taskBindTreasureGO;
+    [SerializeField] GameObject taskStartTriggerGO;
+    [SerializeField] GameObject taskFinishTriggerGO;
+    [SerializeField] GameObject taskFinishDestroyGO;
 
     [Header("Read Only")]
     [SerializeField] bool isInteracted = false;
@@ -30,15 +32,22 @@ public class NPCInteractiveArea : MonoBehaviour
         return tackFinished;
     }
 
-    public void TriggerTaskFinishOperation()
+    public void FinishTask()
+    {
+        tackFinished = true;
+    }
+
+    public void FinishDialog()
     {
         if(tackFinished)
         {
+            isInteracted = false;
+            Destroy(taskFinishDestroyGO);
+            taskFinishTriggerGO.SetActive(true);
             return;
         }
 
-        taskBindTreasureGO.SetActive(true);
-        tackFinished = true;
+        taskStartTriggerGO.SetActive(true);
         isInteracted = false;
     }
 

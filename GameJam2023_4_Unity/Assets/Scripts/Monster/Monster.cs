@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Monster : MonoBehaviour
 {
@@ -34,6 +33,11 @@ public class Monster : MonoBehaviour
     [SerializeField] Vector2? attractPos;
     [SerializeField] Vector2 faceDir;
     [SerializeField] Vector3 originalScale;
+
+    public void MonsterDead()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 
     #region Life Cycle
     private void Awake()
@@ -177,20 +181,35 @@ public class Monster : MonoBehaviour
 
     void Attract()
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(groundCheckTf.position, groundCheckRadius);
-        foreach(var collider in collider2Ds)
+        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, attackRadius);
+        foreach(var collider2D in collider2Ds)
         {
-            if (collider.CompareTag("Wood"))
+            if (collider2D.CompareTag("Wood"))
             {
-                Destroy(transform.parent.gameObject);
-            }
-            if (collider.CompareTag("Ground"))
-            {
+                MonsterDead();
                 return;
             }
         }
 
-        rb2D.velocity = new Vector2(0, rb2D.velocity.y);
+        collider2Ds = Physics2D.OverlapCircleAll(groundCheckTf.position, groundCheckRadius);
+        bool canMove = false;
+        foreach(var collider2D in collider2Ds)
+        {
+            
+            if (collider2D.CompareTag("Ground") || collider2D.CompareTag("Trap"))
+            {
+                canMove = true;
+            }
+        }
+
+        if (!canMove)
+        {
+            rb2D.velocity = new Vector2(0, rb2D.velocity.y);
+        }
+        else
+        {
+            AttractMove();
+        }
     }
 
     void SetRandomFromToPosition()
@@ -230,11 +249,17 @@ public class Monster : MonoBehaviour
         attractPos = newAttractPos;
         rb2D.isKinematic = false;
         GetComponent<Collider2D>().isTrigger = false;
+
+        AttractMove();
+
+        monsterState = MonsterState.Attract;
+    }
+
+    void AttractMove()
+    {
         Vector2 delta = attractPos.Value - (Vector2)transform.position;
         Vector2 dir = delta.x > 0 ? Vector2.right : -Vector2.right;
         rb2D.velocity = dir * attractSpeed;
-
-        monsterState = MonsterState.Attract;
 
         faceDir = (attractPos.Value - (Vector2)transform.position).normalized;
     }
