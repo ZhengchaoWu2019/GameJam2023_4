@@ -160,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: E Worm
       objectReference: {fileID: 0}
+    - target: {fileID: 8992447762879318676, guid: d0ee4b7efd23e584fb7fa22f4bc1ed23, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0ee4b7efd23e584fb7fa22f4bc1ed23, type: 3}
 --- !u!1001 &6111356680883020480
@@ -169,6 +173,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6111356680839960090}
     m_Modifications:
+    - target: {fileID: 3976464996698703120, guid: 21e2294919865451484f4d56b7725f08, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -360527752, guid: d5adb7b6624bbb241b151d172c494ee4, type: 3}
+    - target: {fileID: 3976464996698703120, guid: 21e2294919865451484f4d56b7725f08, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3976464996698703121, guid: 21e2294919865451484f4d56b7725f08, type: 3}
       propertyPath: speed
       value: 2
@@ -232,6 +244,10 @@ PrefabInstance:
     - target: {fileID: 3976464997782555584, guid: 21e2294919865451484f4d56b7725f08, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976464998173372275, guid: 21e2294919865451484f4d56b7725f08, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e2294919865451484f4d56b7725f08, type: 3}
