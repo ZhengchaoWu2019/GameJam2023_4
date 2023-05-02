@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex == 3)
         {
-            if(currentPlayer.FireCount == 3)
+            if(currentPlayer.FireCount >= 2)
             {
                 SceneManager.LoadScene("EndScene_L");
                 return;
